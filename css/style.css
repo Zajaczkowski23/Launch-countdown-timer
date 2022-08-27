@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Red+Hat+Text:wght@700&display=swap');
+
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --Grayish-blue: hsl(237, 18%, 59%);
+    --Soft-red: hsl(345, 95%, 68%);
+    --White: hsl(0, 0%, 100%);
+    --Dark-desaturated-blue: hsl(236, 21%, 26%);
+    --Very-dark-blue: hsl(235, 16%, 14%);
+    --Very-darker-blue: hsl(234, 17%, 12%);
+}
+html {
+    height: 100%;
+}
+
+body {
+    font-family: 'Red Hat Text', sans-serif;
+    height: 100%;
+    overflow: hidden;
+}
+
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to bottom, var(--Very-darker-blue), var(--Very-dark-blue), var(--Dark-desaturated-blue));
+}
+
+.container {
+    position: relative;
+    z-index: 10;
+}
+
+.title {
+    color: var(--White);
+    text-transform: uppercase;
+    font-size: 28px;
+    letter-spacing: 6px;
+    text-align: center;
+    position: fixed;
+    top: 20%;
+    z-index: 10;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.time-box {
+    display: flex;
+    justify-content: space-between;
+}
+
+.container-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-right: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.card {
+    text-align: center;
+    background: linear-gradient(to bottom, var(--Dark-desaturated-blue) 50%, hsl(238, 15%, 32%) 50%);
+    width: 160px;
+    padding: 1.5rem 0;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    position: relative;
+}
+
+.card::before {
+    left: 0;
+    transform: translate(-50%, -50%);
+}
+
+.card::before,
+.card::after {
+    content: "";
+    background-color: var(--Very-dark-blue);
+    width: 12px;
+    position: absolute;
+    height: 12px;
+    top: 50%;
+    border-radius: 100px;
+}
+
+.card::after {
+    right: 0;
+    transform: translate(50%,-50%);
+}
+
+.time {
+    color: var(--Soft-red);
+    font-size: 5rem;
+}
+
+.time-text {
+    color: var(--Grayish-blue);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-size: .9rem;
+    margin-top: 1rem;
+}
+
+.hills {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.stars {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.star {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 4px;
+    height: 4px;
+    background-color: var(--White);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1), 
+    0 0 0 8px rgba(255, 255, 255, 0.1),
+    0 0 20px rgba(255, 255, 255, 1);
+    animation: animate 5s linear infinite;
+}
+
+.star::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 300px;
+    height: 1px;
+    background: linear-gradient(90deg, #fff, transparent);
+}
+
+.star:nth-child(2) {
+    top: 0;
+    left: 70%;
+    animation: animate 4s linear infinite;
+}
+
+.star:nth-child(3) {
+    top: 0;
+    left: 90%;
+    animation: animate 3s linear infinite;
+}
+
+.star:nth-child(4) {
+    top: 0;
+    left: 30%;
+    animation: animate 3s linear infinite;
+}
+
+.socials {
+    position: fixed;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%);
+}
+
+.socials .link {
+    margin-right: 30px;
+}
+
+.socials .link:last-child {
+    margin-right: 0;
+}
+
+
+.socials .link svg {
+    transform: scale(1.2);
+}
+
+.socials .link:hover path {
+    fill: var(--Soft-red);
+}
+
+
+@keyframes animate {
+    0% {
+        transform: rotate(315deg) translateX(0);
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: rotate(315deg) translateX(-1000px);
+        opacity: 0;
+    }
+}
+
+
+@media(max-width:770px) {
+    .container-box {
+        margin-right: 1rem;
+    }
+
+
+    .card {
+        max-width: 100px;
+    }
+
+    .time {
+        font-size: 2rem;
+    }
+}
+
+@media(max-width:500px) {
+    body {
+        overflow-x: hidden;
+    }
+
+    .time-box {
+        flex-direction: column;
+        margin-top: 2rem;
+    }
+
+    .title {
+        top: 2%;
+        font-size: 24px;
+        overflow: hidden;
+    }
+
+    .container-box {
+        margin: 0 0 .5rem;
+    }
+
+    .time-text {
+        margin: 0;
+    }
+
+    .socials {
+        bottom: 5%;
+    }
+}
